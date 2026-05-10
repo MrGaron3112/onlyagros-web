@@ -1,4 +1,4 @@
-import ProductCard from './AAAA'
+import ProductCard from './ProductCard'
 
 export default function ProductsSection() {
   const products = [
