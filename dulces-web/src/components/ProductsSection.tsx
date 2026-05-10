@@ -1,4 +1,5 @@
 import ProductCard from './ProductCard'
+import Reveal from './Reveal'
 
 export default function ProductsSection() {
   const products = [
@@ -30,30 +31,34 @@ export default function ProductsSection() {
       className="py-28 px-6 bg-[#f8f3ed]"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto">
-          <span className="text-orange-500 uppercase tracking-[0.3em] font-black text-sm">
-            Productos
-          </span>
+        <Reveal>
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-orange-500 uppercase tracking-[0.3em] font-black text-sm">
+              Destacados
+            </span>
 
-          <h2 className="mt-5 text-5xl md:text-6xl font-black text-zinc-900 leading-tight">
-            Tradición hecha dulce.
-          </h2>
+            <h2 className="mt-5 text-5xl md:text-6xl font-black text-zinc-900 leading-tight">
+              Nuestros productos destacados.
+            </h2>
 
-          <p className="mt-6 text-lg text-zinc-600 leading-relaxed">
-            Descubre los sabores más representativos de Colima.
-          </p>
-        </div>
+            <p className="mt-6 text-lg text-zinc-600 leading-relaxed">
+             Una selección especial de dulces regionales artesanales inspirados en la tradición de Comala y Colima.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-10 mt-20">
-          {products.map((product, index) => (
-            <ProductCard
-              key={index}
-              name={product.name}
-              image={product.image}
-              price={product.price}
-            />
-          ))}
-        </div>
+        <Reveal delay={0.3}>
+          <div className="grid md:grid-cols-3 gap-10 mt-20">
+            {products.map((product, index) => (
+              <ProductCard
+                key={index}
+                name={product.name}
+                image={product.image}
+                price={product.price}
+              />
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   )
