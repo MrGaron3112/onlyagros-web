@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
-import { useCart } from '../components/CartContext'
 
 export default function Products() {
-  const { addToCart } = useCart()
   const [selectedProduct, setSelectedProduct] = useState<any>(null)
 
   const products = [
@@ -35,14 +33,7 @@ export default function Products() {
   ]
 
   return (
-    <section
-      className="
-        min-h-screen
-        py-24
-        px-6
-        bg-[#f8f3ed]
-      "
-    >
+    <section className="min-h-screen py-24 px-6 bg-[#f8f3ed]">
 
       {/* HEADER */}
       <div className="max-w-7xl mx-auto text-center">
@@ -65,7 +56,6 @@ export default function Products() {
             image={p.image}
             price={p.price}
             onClick={() => setSelectedProduct(p)}
-            onAdd={() => addToCart(p)}
           />
         ))}
 

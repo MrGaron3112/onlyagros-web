@@ -16,12 +16,16 @@ export default function ProductCard({
   const { addToCart } = useCart()
 
   return (
-    <div className="bg-white rounded-3xl overflow-hidden shadow-xl">
+    <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:-translate-y-2 transition">
 
       {/* IMAGE */}
-      <div onClick={onClick} className="h-[400px] overflow-hidden">
+      <div
+        onClick={onClick}
+        className="h-[400px] overflow-hidden cursor-pointer"
+      >
         <img
           src={image}
+          alt={name}
           className="w-full h-full object-cover hover:scale-110 transition duration-500"
         />
       </div>
@@ -29,7 +33,9 @@ export default function ProductCard({
       {/* CONTENT */}
       <div className="p-5 space-y-3">
 
-        <h3 className="font-black text-xl">{name}</h3>
+        <h3 className="font-black text-xl text-zinc-900">
+          {name}
+        </h3>
 
         <p className="text-orange-500 font-bold">
           ${price} MXN
@@ -43,7 +49,7 @@ export default function ProductCard({
               price
             })
           }
-          className="w-full bg-orange-500 text-white py-3 rounded-xl font-black hover:bg-orange-600 transition"
+          className="w-full bg-orange-500 text-white py-3 rounded-xl font-black hover:bg-orange-600 transition active:scale-95"
         >
           Agregar
         </button>
