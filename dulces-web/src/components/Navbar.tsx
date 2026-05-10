@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react'
 import { HiMenu, HiX } from 'react-icons/hi'
+import { useCart } from './CartContext'
+import CartDrawer from './CartDrawer'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false)
+  const [bump, setBump] = useState(false)
+
+  const { cart } = useCart()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +20,19 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // 🎯 animación del carrito cuando cambia cantidad
+  useEffect(() => {
+    if (cart.length > 0) {
+      setBump(true)
+
+      const timer = setTimeout(() => {
+        setBump(false)
+      }, 300)
+
+      return () => clearTimeout(timer)
+    }
+  }, [cart.length])
 
   return (
     <>
@@ -25,6 +45,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
 
+          {/* LOGO */}
           <h1
             className={`font-black tracking-tight transition-all duration-500 text-xl sm:text-2xl md:text-3xl ${
               scrolled ? 'text-orange-500' : 'text-white drop-shadow-lg'
@@ -33,7 +54,7 @@ export default function Navbar() {
             OnlyAgros
           </h1>
 
-          {/* Desktop */}
+          {/* DESKTOP MENU */}
           <nav
             className={`hidden md:flex items-center gap-6 lg:gap-10 font-semibold transition-colors ${
               scrolled ? 'text-zinc-800' : 'text-white'
@@ -42,50 +63,88 @@ export default function Navbar() {
             <a href="#inicio" className="hover:text-orange-500 transition">
               Inicio
             </a>
-            <a href="#productos" className="hover:text-orange-500 transition">
+
+            <Link to="/productos" className="hover:text-orange-500 transition">
               Productos
-            </a>
+            </Link>
+
             <a href="#contacto" className="hover:text-orange-500 transition">
               Contacto
             </a>
           </nav>
 
-          <button
-            className={`hidden md:block px-4 sm:px-6 py-2 sm:py-3 rounded-full font-black transition-all hover:scale-105 ${
-              scrolled
-                ? 'bg-orange-500 text-white'
-                : 'bg-white/10 text-white border border-white/20'
-            }`}
-          >
-            Comprar
-          </button>
+          {/* DESKTOP CART */}
+          <div className="hidden md:flex items-center gap-4">
 
-          {/* Mobile */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className={`md:hidden text-3xl sm:text-4xl ${
-              scrolled ? 'text-zinc-900' : 'text-white'
-            }`}
-          >
-            {menuOpen ? <HiX /> : <HiMenu />}
-          </button>
+            <button
+              onClick={() => setCartOpen(true)}
+              className={`px-5 sm:px-6 py-2 sm:py-3 rounded-full font-black transition-all flex items-center gap-2 ${
+                scrolled
+                  ? 'bg-zinc-900 text-white'
+                  : 'bg-white/10 text-white border border-white/20'
+              } transition-transform duration-300 ease-out ${
+                bump ? 'scale-110' : 'scale-100'
+              }`}
+            >
+              🛒 {cart.length}
+            </button>
+
+          </div>
+
+          {/* MOBILE */}
+          <div className="md:hidden flex items-center gap-3">
+
+            {/* CART MOBILE */}
+            <button
+              onClick={() => setCartOpen(true)}
+              className={`text-xl sm:text-2xl px-3 py-2 rounded-full font-black relative transition-transform duration-300 ease-out ${
+                bump ? 'scale-110' : 'scale-100'
+              } ${
+                scrolled ? 'text-zinc-900' : 'text-white'
+              }`}
+            >
+              🛒 {cart.reduce((acc, item) => acc + item.quantity, 0)}
+            </button>
+
+            {/* MENU */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className={`text-3xl sm:text-4xl ${
+                scrolled ? 'text-zinc-900' : 'text-white'
+              }`}
+            >
+              {menuOpen ? <HiX /> : <HiMenu />}
+            </button>
+
+          </div>
+
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       <div
         className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 text-white text-2xl sm:text-3xl font-black transition-all duration-500 ${
           menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
-        <a href="#inicio" onClick={() => setMenuOpen(false)}>Inicio</a>
-        <a href="#productos" onClick={() => setMenuOpen(false)}>Productos</a>
-        <a href="#contacto" onClick={() => setMenuOpen(false)}>Contacto</a>
+        <a href="#inicio" onClick={() => setMenuOpen(false)}>
+          Inicio
+        </a>
 
-        <button className="bg-orange-500 px-8 sm:px-10 py-4 sm:py-5 rounded-2xl">
-          Comprar
-        </button>
+        <Link to="/productos" onClick={() => setMenuOpen(false)}>
+          Productos
+        </Link>
+
+        <a href="#contacto" onClick={() => setMenuOpen(false)}>
+          Contacto
+        </a>
       </div>
+
+      {/* CART DRAWER */}
+      <CartDrawer
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+      />
     </>
   )
 }
