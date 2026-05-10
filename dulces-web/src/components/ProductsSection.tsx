@@ -1,4 +1,4 @@
-import ProductCard from './ProductCard'
+import ProductCard from '../components/ProductCard'
 
 export default function ProductsSection() {
   const products = [
