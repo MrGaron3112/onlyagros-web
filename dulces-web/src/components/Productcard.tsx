@@ -1,4 +1,4 @@
-type ProductCardProps = {
+type ProductProps = {
   name: string
   image: string
   price: string
@@ -8,7 +8,7 @@ export default function ProductCard({
   name,
   image,
   price
-}: ProductCardProps) {
+}: ProductProps) {
   return (
     <div className="group bg-white rounded-[36px] overflow-hidden shadow-2xl hover:-translate-y-4 transition duration-700 border border-orange-100">
       <div className="relative h-[420px] overflow-hidden">
