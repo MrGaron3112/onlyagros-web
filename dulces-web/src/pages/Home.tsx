@@ -2,7 +2,6 @@ import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Benefits from '../components/Benefits'
 import ProductsSection from '../components/ProductsSection'
-import Footer from '../components/Footer'
 import Gallery from '../components/Gallery'
 import MouseGlow from '../components/MouseGlow'
 import SmoothScroll from '../components/SmoothScroll'
@@ -26,8 +25,6 @@ export default function Home() {
       <ProductsSection />
 
       <Gallery />
-
-      <Footer />
     </div>
   )
 }

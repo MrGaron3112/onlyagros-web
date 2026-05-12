@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom' // 1. Importamos el Link
 
 export default function Hero() {
   const heroImages = [
-  '/images/hero/hero1.webp',
-  '/images/hero/hero2.webp',
-  '/images/hero/hero3.webp'
+    '/images/hero/hero1.webp',
+    '/images/hero/hero2.webp',
+    '/images/hero/hero3.webp'
   ]
 
   const [currentImage, setCurrentImage] = useState(0)
@@ -16,7 +17,7 @@ export default function Hero() {
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [heroImages.length]) // Agregué heroImages.length aquí como buena práctica
 
   return (
     <section
@@ -87,9 +88,13 @@ export default function Hero() {
           transition={{ delay: 1.2, duration: 1 }}
           className="mt-12 flex justify-center gap-6 flex-wrap"
         >
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-5 rounded-2xl text-lg font-black shadow-2xl transition hover:scale-105">
+          {/* 2. Cambiamos el <button> por <Link to="/productos"> */}
+          <Link 
+            to="/productos"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-5 rounded-2xl text-lg font-black shadow-2xl transition hover:scale-105"
+          >
             Ver Catálogo
-          </button>
+          </Link>
 
         </motion.div>
       </motion.div>
@@ -105,6 +110,7 @@ export default function Hero() {
                 ? 'w-14 bg-orange-400'
                 : 'w-3 bg-white/50'
             }`}
+            aria-label={`Slide ${index + 1}`}
           />
         ))}
       </div>

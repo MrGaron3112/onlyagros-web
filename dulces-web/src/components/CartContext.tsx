@@ -7,6 +7,7 @@ export type Product = {
   price: number
   description?: string // Añadido
   category?: string    // Añadido
+  content?: string
 }
 
 export type CartItem = Product & {

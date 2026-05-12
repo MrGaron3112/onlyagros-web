@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Footer() {
   return (
     <footer
@@ -22,23 +24,17 @@ export default function Footer() {
           </h4>
 
           <div className="flex flex-col gap-4 text-zinc-400 text-lg">
-            <a href="#inicio" className="hover:text-orange-400 transition">
+            {/* ENLACES FUNCIONALES CON REACT ROUTER */}
+            <Link to="/" className="hover:text-orange-400 transition">
               Inicio
-            </a>
+            </Link>
 
-            <a
-              href="#productos"
+            <Link
+              to="/productos"
               className="hover:text-orange-400 transition"
             >
               Productos
-            </a>
-
-            <a
-              href="#contacto"
-              className="hover:text-orange-400 transition"
-            >
-              Contacto
-            </a>
+            </Link>
           </div>
         </div>
 
