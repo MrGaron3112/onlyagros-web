@@ -33,17 +33,34 @@ export default function Products() {
     {
       name: 'Cacahuates Garapiñados',
       description: 'Cacahuates tostados con una capa crujiente de caramelo artesanal. El snack clásico con el toque secreto de OnlyAgros.',
-      image: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=80&w=1200&auto=format&fit=crop',
+      image: 'images/products/producto6.webp',
       price: 85,
       category: 'Snack'
     },
-    {
-      name: 'Alegrías de Amaranto',
-      description: 'Amaranto tostado mezclado con miel de abeja y piloncillo. Un dulce nutritivo, ligero y lleno de energía.',
-      image: 'https://images.unsplash.com/photo-1604908812004-1b0a1b7f1b4a?q=80&w=1200&auto=format&fit=crop',
-      price: 85,
-      category: 'Tradicional'
-    }
+  {
+    name: 'Mazapán Tradicional',
+    description: 'El clásico sabor de Colima en un tamaño ideal para compartir. Elaborado con cacahuate seleccionado e ingredientes 100% naturales. Una receta que se deshace en la boca.',
+    image: 'images/products/producto5.webp',
+    price: 15, // Precio sugerido (puedes ajustarlo)
+    content: '50g',
+    category: 'Snack Tradicional'
+  },
+  {
+    name: 'Pellizcos de Tamarindo',
+    description: 'Bolitas artesanales de tamarindo cubiertas con azúcar. El equilibrio perfecto entre dulce y acidito que te transporta a los sabores de nuestra tierra.',
+    image: 'images/products/producto4.webp',
+    price: 35, // Precio sugerido (puedes ajustarlo)
+    content: '200g',
+    category: 'Snack Tradicional'
+  },
+  {
+  name: 'Alfajor Colimote',
+  description: 'El tradicional sabor de nuestra tierra en un bocado. Alfajor artesanal con su clásica capa rosa, elaborado con ingredientes 100% naturales. Textura suave y un dulzor inconfundible.',
+  image: 'images/products/producto7.webp', // Aquí iría la ruta de tu imagen
+  price: 20, // Precio sugerido al ser una porción individual de 50g
+  content: '50g',
+  category: 'Snack Tradicional'
+}
   ]
 
   return (
