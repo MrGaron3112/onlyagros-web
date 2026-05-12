@@ -3,11 +3,9 @@ import { motion } from 'framer-motion'
 
 export default function Hero() {
   const heroImages = [
-    'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop',
-
-    'https://images.unsplash.com/photo-1575224300306-1b8da36134ec?q=80&w=1600&auto=format&fit=crop',
-
-    'https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1600&auto=format&fit=crop'
+  '/images/hero/hero1.webp',
+  '/images/hero/hero2.webp',
+  '/images/hero/hero3.webp'
   ]
 
   const [currentImage, setCurrentImage] = useState(0)
@@ -93,9 +91,6 @@ export default function Hero() {
             Ver Catálogo
           </button>
 
-          <button className="bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 text-white px-10 py-5 rounded-2xl text-lg font-bold transition">
-            WhatsApp
-          </button>
         </motion.div>
       </motion.div>
 
