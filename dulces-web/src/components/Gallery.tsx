@@ -5,31 +5,31 @@ import ParallaxImage from './ParallaxImage'
 const images = [
   {
     image:
-      'https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=1200&auto=format&fit=crop',
+      '/images/gallery/galeria1.webp',
     height: 'h-[500px]'
   },
 
   {
     image:
-      'https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200&auto=format&fit=crop',
+      '/images/gallery/galeria2.webp',
     height: 'h-[320px]'
   },
 
   {
     image:
-      'https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=80&w=1200&auto=format&fit=crop',
+      '/images/gallery/galeria3.webp',
     height: 'h-[400px]'
   },
 
   {
     image:
-      'https://images.unsplash.com/photo-1481391032119-d89fee407e44?q=80&w=1200&auto=format&fit=crop',
+      '/images/gallery/galeria4.webp',
     height: 'h-[600px]'
   },
 
   {
     image:
-      'https://images.unsplash.com/photo-1516747773440-3b54d2b8e5a5?q=80&w=1200&auto=format&fit=crop',
+      '/images/gallery/galeria5.webp',
     height: 'h-[350px]'
   }
 ]
